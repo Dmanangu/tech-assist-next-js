@@ -2,5 +2,9 @@ import React from "react";
 import Layout from "../component/Layout";
 import Login from "./login";
 export default function Home() {
-  return <Login />;
+  return (
+    <Layout>
+      <Login />
+    </Layout>
+  );
 }

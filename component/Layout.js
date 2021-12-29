@@ -22,24 +22,24 @@ function Layout({ children }) {
           <div className={classes.grow}></div>
           <div>
             <NextLink href="/clients" passHref>
-              <Link className={classes.brand}>SUPPORT</Link>
-            </NextLink>
-            <NextLink href="/payment" passHref>
-              <Link className={classes.brand}>PAYMENT</Link>
+              <Link className={classes.brand}>CLIENTS</Link>
             </NextLink>
             <NextLink href="/worker" passHref>
               <Link className={classes.brand}>WORKER</Link>
             </NextLink>
-            <NextLink href="/clients" passHref>
-              <Link className={classes.brand}>CLIENTS</Link>
+            <NextLink href="/payments" passHref>
+              <Link className={classes.brand}>PAYMENTS</Link>
+            </NextLink>
+            <NextLink href="/support" passHref>
+              <Link className={classes.brand}>SUPPORT</Link>
             </NextLink>
           </div>
         </Toolbar>
       </AppBar>
       <Container className={classes.main}>{children}</Container>
-      <footer className={classes.footer}>
+      {/* <footer className={classes.footer}>
         <Typography>All rights reserved. TechAssist 2021-2022.</Typography>
-      </footer>
+      </footer> */}
     </div>
   );
 }
