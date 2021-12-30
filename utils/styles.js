@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     marginTop: "5%",
     width: 500,
     height: 500,
-    backgroundColor: "#e4dee0",
+    backgroundColor: "#f4e4e4",
   },
   color: {
     backgroundColor: "#f5970a",

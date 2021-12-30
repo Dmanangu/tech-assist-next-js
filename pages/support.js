@@ -12,12 +12,12 @@ import React from "react";
 import Layout from "../component/Layout";
 import NextLink from "next/link";
 import useStyles from "../utils/styles";
-
+import supportStyles from "./css/support.module.css";
 export default function Support() {
   const classes = useStyles();
   return (
     <Layout>
-      <div>
+      <div className={supportStyles.supportContainer}>
         <Card className={classes.supportCard}>
           <MenuList dense>
             <Typography variant="h2" className={classes.center}>
