@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import { useEffect } from "react";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
+//
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -8,7 +10,11 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  return <Component {...pageProps} />;
+  return (
+    <PayPalScriptProvider>
+      <Component {...pageProps} />
+    </PayPalScriptProvider>
+  );
 }
 
 export default MyApp;
