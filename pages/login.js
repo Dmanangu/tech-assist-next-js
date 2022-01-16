@@ -7,11 +7,15 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
 import useStyles from "../utils/styles";
+import { UserContext } from "../lib/context";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const classes = useStyles();
+  const router = useRouter();
+
   return (
     <div title="Login">
       <form>

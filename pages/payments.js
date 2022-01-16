@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useContext } from "react";
 import Layout from "../component/Layout";
 import paymentStyles from "./css/payment.module.css";
 import useStyles from "../utils/styles";
@@ -7,7 +7,7 @@ import NextLink from "next/link";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
+import { UserContext } from "../lib/context";
 //
 function reducer(state, action) {
   switch (action.type) {
@@ -43,19 +43,20 @@ export default function Payments({ params }) {
     loading: true,
     error: "",
   });
+  const { user } = useContext(UserContext);
   useEffect(() => {
     // if (!userAdmin) {
     //   return router.push("/login");
     // } else {
     const loadPaypalScript = async () => {
       const { data: clientId } = await axios.get("/api/keys/paypal", {
-        headers: { authorization: `Bearer ${userInfo.token}` },
+        headers: { authorization: `Bearer ${user}` },
       });
       paypalDispatch({
         type: "resetOption",
         value: {
           "client-id": clientId,
-          currency: "USD",
+          currency: "PHP",
         },
       });
       paypalDispatch({ type: "setLoadingStatus", value: "pending" });

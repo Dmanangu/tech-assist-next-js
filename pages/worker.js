@@ -1,10 +1,85 @@
-import React from "react";
+import {
+  Box,
+  Card,
+  CardActionArea,
+  Typography,
+  CardMedia,
+  CardContent,
+  Paper,
+  Table,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+import React, { useState, useContext } from "react";
 import Layout from "../component/Layout";
 import workerStyles from "./css/worker.module.css";
-export default function Worker() {
+import { postToJSON, firestore } from "../lib/firebase";
+import Image from "next/image";
+import NextLink from "next/link";
+//
+
+export async function getServerSideProps() {
+  const postsQuery = firestore.collectionGroup("users");
+  // .where('published', '==', true)
+  // .orderBy('createdAt', 'desc')
+  // .limit(LIMIT);
+
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
+  // console.log(posts);
+  return {
+    props: { posts }, // will be passed to the page component as props
+  };
+}
+
+export default function Worker(props) {
+  const [posts, setPosts] = useState(props.posts);
+
+  const usersClient = posts.filter((users) => {
+    return users.isClient.toLowerCase().includes("false");
+  });
   return (
-    <Layout>
-      <div className={workerStyles.workerContainer}></div>
+    <Layout title="Workers">
+      <div>
+        <input
+          className={workerStyles.search}
+          type="search"
+          placeholder="Search Worker Here"
+        />
+      </div>
+      <div className={workerStyles.workerContainer}>
+        <Paper style={{ maxHeight: 700, overflow: "auto" }}>
+          <Card>
+            {usersClient.map((users) => (
+              <CardActionArea>
+                <CardContent sx={{ display: "flex" }}>
+                  <NextLink href={`./worker/${users.email}`}>
+                    <Table>
+                      <TableCell>
+                        <img
+                          component="img"
+                          image={users.imageUrl}
+                          height={200}
+                          width={300}
+                          alt={users.fullname}
+                          align="left"
+                        />
+                        <Typography variant="h3">
+                          <strong>{users.fullname}</strong>
+                        </Typography>
+                        <Typography variant="h4">{users.address}</Typography>
+                        <Typography variant="h4">
+                          {users.phoneNumber}
+                        </Typography>
+                        <Typography variant="h4">{users.username}</Typography>
+                      </TableCell>
+                    </Table>
+                  </NextLink>
+                </CardContent>
+              </CardActionArea>
+            ))}
+          </Card>
+        </Paper>
+      </div>
     </Layout>
   );
 }
