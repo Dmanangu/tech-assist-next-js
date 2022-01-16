@@ -25,9 +25,7 @@ export default function Support() {
             </Typography>
             <Divider />
             <MenuItem>
-              <NextLink href={"/profile"} passHref>
-                <Typography variant="h4">ACCOUNT SETTINGS</Typography>
-              </NextLink>
+              <Typography variant="h4">ACCOUNT SETTINGS</Typography>
             </MenuItem>
             <MenuItem>
               <NextLink href={"/delete"} passHref>

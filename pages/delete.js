@@ -34,7 +34,16 @@ function DeleteUser(props) {
   const usersClient = posts.filter((users) => {
     return users.isClient.toLowerCase().includes("false");
   });
-
+  // const removeItemHandler = (users) => {
+  //   users
+  //     .delete()
+  //     .then(function () {
+  //       //user Deleted
+  //     })
+  //     .catch(function (error) {
+  //       // An error happened.
+  //     });
+  // };
   return (
     <Layout>
       <div className={delStyles.deleteContainer}>
@@ -97,7 +106,7 @@ function DeleteUser(props) {
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={() => removeItemHandler(item)}
+                          onClick={() => removeItemHandler(users)}
                         >
                           Remove User
                         </Button>
