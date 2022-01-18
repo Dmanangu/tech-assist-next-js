@@ -44,26 +44,26 @@ export default function Payments({ params }) {
     error: "",
   });
   const { user } = useContext(UserContext);
-  useEffect(() => {
-    // if (!userAdmin) {
-    //   return router.push("/login");
-    // } else {
-    const loadPaypalScript = async () => {
-      const { data: clientId } = await axios.get("/api/keys/paypal", {
-        headers: { authorization: `Bearer ${user}` },
-      });
-      paypalDispatch({
-        type: "resetOption",
-        value: {
-          "client-id": clientId,
-          currency: "PHP",
-        },
-      });
-      paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-    };
-    loadPaypalScript();
-    // }
-  }, [successPay]);
+  // useEffect(() => {
+  //   // if (!userAdmin) {
+  //   //   return router.push("/login");
+  //   // } else {
+  //   const loadPaypalScript = async () => {
+  //     const { data: clientId } = await axios.get("/api/keys/paypal", {
+  //       headers: { authorization: `Bearer ${user}` },
+  //     });
+  //     paypalDispatch({
+  //       type: "resetOption",
+  //       value: {
+  //         "client-id": clientId,
+  //         currency: "PHP",
+  //       },
+  //     });
+  //     paypalDispatch({ type: "setLoadingStatus", value: "pending" });
+  //   };
+  //   loadPaypalScript();
+  //   // }
+  // }, [successPay]);
 
   //
 
@@ -86,7 +86,6 @@ export default function Payments({ params }) {
             </NextLink>
           </div>
         </div>
-        <PayPalButtons />
       </div>
     </Layout>
   );

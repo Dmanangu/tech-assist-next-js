@@ -1,12 +1,20 @@
-import { Button, Table, TableCell, TableRow, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Table,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import Layout from "../component/Layout";
 import paymentStyles from "./css/payment.module.css";
 import paymentHistoryStyles from "./css/paymenthistory.module.css";
 import useStyles from "../utils/styles";
 import NextLink from "next/link";
+import { Paper } from "@material-ui/core";
 
-export default function PaymentHistory() {
+export default function ClientPayment() {
   const styles = useStyles();
   return (
     <Layout>
@@ -27,27 +35,22 @@ export default function PaymentHistory() {
           </div>
           <div className={paymentHistoryStyles.transactionHistory}>
             <div>
-              <Table
-                style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
+              <Paper
+                style={{
+                  maxHeight: 700,
+                  overflow: "auto",
+                  borderStyle: "solid",
+                }}
               >
-                <TableRow>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h3"> Date </Typography>
-                  </TableCell>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h3">From Client's Payment </Typography>
-                  </TableCell>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h3"> To Worker </Typography>
-                  </TableCell>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h3">Amount </Typography>
-                  </TableCell>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h3">Status </Typography>
-                  </TableCell>
-                </TableRow>
-              </Table>
+                <Table style={{ backgroundColor: "#d8cccc" }}>
+                  <Typography variant="h4">
+                    <strong>Client's Payment</strong>
+                  </Typography>
+                </Table>
+                <Table>
+                  <Card> XXXXXXXXXXXXXXXXXXXXXXXXXXX </Card>
+                </Table>
+              </Paper>
             </div>
           </div>
         </div>
