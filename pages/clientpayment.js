@@ -1,21 +1,46 @@
 import {
   Button,
   Card,
+  CardActionArea,
+  CardContent,
   Table,
   TableCell,
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState, useContext } from "react";
 import Layout from "../component/Layout";
 import paymentStyles from "./css/payment.module.css";
 import paymentHistoryStyles from "./css/paymenthistory.module.css";
 import useStyles from "../utils/styles";
 import NextLink from "next/link";
 import { Paper } from "@material-ui/core";
+import { postToJSON, firestore } from "../lib/firebase";
 
-export default function ClientPayment() {
+//
+export async function getServerSideProps() {
+  const postsQuery = firestore.collectionGroup("payment");
+  // .where('published', '==', true)
+  // .orderBy('createdAt', 'desc')
+  // .limit(LIMIT);
+
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
+  // console.log(posts);
+  return {
+    props: { posts }, // will be passed to the page component as props
+  };
+}
+//
+
+export default function ClientPayment(props) {
   const styles = useStyles();
+  //firebase
+  const [posts, setPosts] = useState(props.posts);
+  const usersClient = posts.filter((payment) => {
+    return payment;
+    // .isClient.toLowerCase().includes("false");
+  });
+  //firebase
   return (
     <Layout>
       <div>
@@ -48,7 +73,37 @@ export default function ClientPayment() {
                   </Typography>
                 </Table>
                 <Table>
-                  <Card> XXXXXXXXXXXXXXXXXXXXXXXXXXX </Card>
+                  <Card>
+                    {usersClient.map((payment) => (
+                      <CardActionArea>
+                        <NextLink
+                          href={`./clientpaymentverification/${payment.from}`}
+                        >
+                          <CardContent sx={{ display: "flex" }}>
+                            <Table>
+                              <TableCell>
+                                <img
+                                  component="img"
+                                  src={payment.imageUrl}
+                                  height={100}
+                                  width={175}
+                                  alt={payment.from}
+                                  align="left"
+                                />
+                                <Typography variant="h5">
+                                  FROM:<b>{payment.from} </b> &emsp; TO:
+                                  <b>{payment.to}</b>
+                                </Typography>
+                                <Typography variant="h5">
+                                  <b>Received:</b> {payment.message}
+                                </Typography>
+                              </TableCell>
+                            </Table>
+                          </CardContent>
+                        </NextLink>
+                      </CardActionArea>
+                    ))}
+                  </Card>
                 </Table>
               </Paper>
             </div>
