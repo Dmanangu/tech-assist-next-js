@@ -15,6 +15,7 @@ import Layout from "../component/Layout";
 import delStyles from "./css/delete.module.css";
 import { postToJSON, firestore } from "../lib/firebase";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 //
 export async function getServerSideProps() {
@@ -30,20 +31,24 @@ export async function getServerSideProps() {
   };
 }
 function DeleteUser(props) {
+  const router = useRouter();
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((users) => {
-    return users.isClient.toLowerCase().includes("false");
+    return users;
+    // .isClient.toLowerCase().includes("false");
   });
-  // const removeItemHandler = (users) => {
-  //   users
-  //     .delete()
-  //     .then(function () {
-  //       //user Deleted
-  //     })
-  //     .catch(function (error) {
-  //       // An error happened.
-  //     });
-  // };
+  const removeUser = (e) => {
+    try {
+      firestore
+        .collection("users")
+        .doc(e)
+        .delete()
+        .then(alert("This User is now deleted"));
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
   return (
     <Layout>
       <div className={delStyles.deleteContainer}>
@@ -106,7 +111,7 @@ function DeleteUser(props) {
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={() => removeItemHandler(users)}
+                          onClick={() => removeUser(users.id)}
                         >
                           Remove User
                         </Button>

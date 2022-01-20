@@ -43,6 +43,10 @@ export default function Clients(props) {
   });
   // console.log(usersClient);
 
+  // const handleChange = (e, props) => {
+  //   search: e.target.value,
+  //   () => {i}
+  // };
   return (
     <Layout title="Clients">
       <div>
@@ -51,6 +55,7 @@ export default function Clients(props) {
             className={clientStyles.search}
             type="search"
             placeholder="Search Client Here"
+            onChange={(e) => handleChange(e, usersClient)}
           />
         </div>
         <div className={clientStyles.clientContainer}>

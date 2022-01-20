@@ -15,6 +15,8 @@ import Layout from "../component/Layout";
 import upStyles from "./css/update.module.css";
 import { postToJSON, firestore } from "../lib/firebase";
 import Image from "next/image";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 //
 export async function getServerSideProps() {
@@ -30,11 +32,27 @@ export async function getServerSideProps() {
   };
 }
 function DeleteUser(props) {
+  // const router = useRouter();
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((users) => {
     return users.status.toLowerCase().includes("not verified");
   });
-  // const updateHandler = usersClient.status("Verified");
+
+  const updateHandler = (e) => {
+    try {
+      firestore
+        .collection("users")
+        .doc(e)
+        .update({
+          status: "Verified",
+        })
+        .then(alert("This User is now Verified"));
+      // router.push(`/update?redirect=${redirect}`);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
   return (
     <Layout>
       <div className={upStyles.updateContainer}>
@@ -98,7 +116,7 @@ function DeleteUser(props) {
                           variant="contained"
                           color="primary"
                           // color="success"
-                          onClick={() => updateHandler(users)}
+                          onClick={() => updateHandler(users.id)}
                         >
                           Verify User
                         </Button>

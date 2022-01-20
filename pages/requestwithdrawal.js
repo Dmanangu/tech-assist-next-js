@@ -59,7 +59,7 @@ export default function RequestWithdrawal(props) {
           <div className={paymentHistoryStyles.transactionHistory}>
             <div>
               <Paper
-                style={{ maxHeight: 750, overflow: "auto", marginLeft: 40 }}
+                style={{ maxHeight: 750, overflow: "auto", marginLeft: 50 }}
               >
                 <Table
                   style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
@@ -75,10 +75,8 @@ export default function RequestWithdrawal(props) {
                       <Typography variant="h4"> &emsp;Amount&emsp; </Typography>
                     </TableCell>
                     <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4">
-                        {" "}
-                        &emsp;Withdrawal Method&emsp;{" "}
-                      </Typography>
+                      <Typography variant="h4"> Withdrawal </Typography>
+                      <Typography variant="h4"> &emsp;Method </Typography>
                     </TableCell>
                     <TableCell style={{ borderStyle: "solid" }}>
                       <Typography variant="h4"> &emsp;Status&emsp; </Typography>
@@ -86,36 +84,40 @@ export default function RequestWithdrawal(props) {
                   </TableRow>
 
                   {usersClient.map((withdrawal) => (
-                    <TableRow
-                      style={{
-                        backgroundColor: "#ffecec",
-                        borderStyle: "solid",
-                      }}
-                    >
-                      <TableCell>
-                        <Typography variant="h6">{withdrawal.date}</Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6">
-                          {withdrawal.withdrawer}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6">
-                          PHP {withdrawal.amount}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6">
-                          {withdrawal.paymentMethod}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6">
-                          {withdrawal.withdraw_status}
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
+                    <NextLink href={`./withdrawal/${withdrawal.withdrawer}`}>
+                      <TableRow
+                        style={{
+                          backgroundColor: "#ffecec",
+                          borderStyle: "solid",
+                        }}
+                      >
+                        <TableCell>
+                          <Typography variant="h6">
+                            {withdrawal.date}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="h6" align="center">
+                            {withdrawal.withdrawer}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="h6" align="center">
+                            PHP {withdrawal.amount}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="h6" align="center">
+                            {withdrawal.paymentMethod}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="h6" align="center">
+                            {withdrawal.withdraw_status}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    </NextLink>
                   ))}
                 </Table>
               </Paper>

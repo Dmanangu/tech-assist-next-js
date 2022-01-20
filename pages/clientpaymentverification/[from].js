@@ -19,7 +19,8 @@ import { postToJSON, firestore } from "../../lib/firebase";
 import paymentStyles from "../css/payment.module.css";
 import { useRouter } from "next/router";
 import { borderRadius } from "@mui/system";
-
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 //
 export async function getServerSideProps() {
   const postsQuery = firestore.collectionGroup("payment");
@@ -57,6 +58,23 @@ export default function ClientPaymentVerification(props) {
     setStatus(event.target.value);
   };
 
+  const handleSubmit = () => {
+    if (status === 100) {
+      try {
+        firestore
+          .collection("payment")
+          .doc(usersClient[0].id)
+          .update({
+            payment_status: "COMPLETED",
+          })
+          .then(alert("Tech Assist Client's Payment Completed and Verified"));
+        router.push("../paymenthistory");
+      } catch (error) {
+        console.log(error);
+        alert(error);
+      }
+    }
+  };
   return (
     <Layout>
       <div>
@@ -64,7 +82,7 @@ export default function ClientPaymentVerification(props) {
           <Grid container spacing={3}>
             <Grid item xs={3}>
               <div className={paymentStyles.paymentButtonContainer}>
-                <NextLink href={"/paymenthistory.js"} passHref>
+                <NextLink href={"/paymenthistory"} passHref>
                   <button className={paymentStyles.buttons}>
                     PAYMENT HISTORY
                   </button>
@@ -171,6 +189,7 @@ export default function ClientPaymentVerification(props) {
                         width: 100,
                       }}
                       variant="contained"
+                      onClick={handleSubmit}
                     >
                       OKAY
                     </Button>
