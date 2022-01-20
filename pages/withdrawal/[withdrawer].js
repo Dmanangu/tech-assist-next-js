@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Alert, Button, Card, CardContent, Typography } from "@mui/material";
 import React, { useReducer, useEffect, useContext, useState } from "react";
 import Layout from "../../component/Layout";
 import paymentStyles from "../css/payment.module.css";
@@ -11,44 +11,23 @@ import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { UserContext } from "../../lib/context";
 import { postToJSON, firestore } from "../../lib/firebase";
 import { useRouter } from "next/router";
+import { Checkbox } from "@material-ui/core";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 //
-function reducer(state, action) {
-  switch (action.type) {
-    case "FETCH_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "FETCH_SUCCESS":
-      return { ...state, loading: false, order: action.payload, error: "" };
-    case "FETCH_FAIL":
-      return { ...state, loading: false, error: action.payload };
-    case "PAY_REQUEST":
-      return { ...state, loadingPay: true };
-    case "PAY_SUCCESS":
-      return { ...state, loadingPay: false, successPay: true };
-    case "PAY_FAIL":
-      return { ...state, loadingPay: false, errorPay: action.payload };
-    case "PAY_RESET":
-      return { ...state, loadingPay: false, successPay: false, errorPay: "" };
-      return {
-        ...state,
-        // loadingDeliver: false,
-        // successDeliver: false,
-        // errorDeliver: '',
-      };
-    default:
-      state;
-  }
-}
 
 //
 
 export async function getServerSideProps() {
   const postsQuery = firestore.collectionGroup("withdrawal");
+
   // .where('published', '==', true)
   // .orderBy('createdAt', 'desc')
   // .limit(LIMIT);
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
+  const posts2 = (await postsQuery.get()).docs.map(postToJSON);
   // console.log(posts);
   return {
     props: { posts }, // will be passed to the page component as props
@@ -58,35 +37,11 @@ export async function getServerSideProps() {
 //
 
 export default function WithdrawalRequest(props) {
-  // const [{ loading, error, successPay }] = useReducer(reducer, {
-  //   loading: true,
-  //   error: "",
-  // });
-
   const { user } = useContext(UserContext);
-  // useEffect(() => {
-  //   // if (!userAdmin) {
-  //   //   return router.push("/login");
-  //   // } else {
-  //   const loadPaypalScript = async () => {
-  //     const { data: clientId } = await axios.get("/api/keys/paypal", {
-  //       headers: { authorization: `Bearer ${user}` },
-  //     });
-  //     paypalDispatch({
-  //       type: "resetOption",
-  //       value: {
-  //         "client-id": clientId,
-  //         currency: "PHP",
-  //       },
-  //     });
-  //     paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-  //   };
-  //   loadPaypalScript();
-  //   // }
-  // }, [successPay]);
 
   //
   const [posts, setPosts] = useState(props.posts);
+
   const router = useRouter();
   const { withdrawer } = router.query;
 
@@ -105,6 +60,39 @@ export default function WithdrawalRequest(props) {
   const [status, setStatus] = React.useState("");
   const handleChange = (event) => {
     setStatus(event.target.value);
+  };
+
+  const [checked, setChecked] = React.useState([true, false]);
+  const checkerStatus = (event) => {
+    setChecked([event.target.checked, event.target.checked]);
+  };
+
+  // const payment = usersClient.find(
+  //   (withdrawal) => withdrawal.amount === amount
+  // );
+
+  const submitHandlerForm = (e) => {
+    var message =
+      "We have already sent PHP " +
+      usersClient[0].amount +
+      " to your GCASH account from Tech Assist. Thank you for improving your service and loyalty to clients";
+    if (checked[0] === true) {
+      try {
+        firestore
+          .collection("withdrawal")
+          .doc(e)
+          .update({
+            withdraw_status: "Completed",
+          })
+          .then(alert(message));
+        // router.push(`/update?redirect=${redirect}`);
+      } catch (error) {
+        console.log(error);
+        alert(error);
+      }
+    } else {
+      alert("The Admin must check the box first for approval");
+    }
   };
   const styles = useStyles();
   return (
@@ -160,7 +148,18 @@ export default function WithdrawalRequest(props) {
                       maxWidth={500}
                       backgroundColor="#ffecec"
                     >
-                      Verification:
+                      <b>Verification:/TechAssist Okay</b>
+                      <Checkbox
+                        checked={checked[0]}
+                        onChange={checkerStatus}
+                        color="success"
+                        style={{
+                          borderRaduis: 10,
+                          backgroundColor: "#3ed21b",
+                          borderStyle: "none",
+                          fontSize: "30px",
+                        }}
+                      />
                     </Typography>
 
                     <Typography variant="h5" align="center">
@@ -221,6 +220,7 @@ export default function WithdrawalRequest(props) {
                         borderRadius: 20,
                         width: 100,
                       }}
+                      onClick={() => submitHandlerForm(withdrawal.id)}
                       variant="contained"
                     >
                       Send
