@@ -37,8 +37,7 @@ export default function ClientPayment(props) {
   //firebase
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((payment) => {
-    return payment;
-    // .isClient.toLowerCase().includes("false");
+    return payment.payment_status.toLowerCase().includes("process");
   });
   //firebase
   return (

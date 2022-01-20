@@ -74,8 +74,8 @@ export default function WithdrawalRequest(props) {
   const submitHandlerForm = (e) => {
     var message =
       "We have already sent PHP " +
-      usersClient[0].amount +
-      " to your GCASH account from Tech Assist. Thank you for improving your service and loyalty to clients";
+      (usersClient[0].amount - usersClient[0].amount * 0.08) +
+      " to your GCASH account from Tech Assist. Thank you for improving your service and loyalty to clients. Take note that Tech Assist takes 8% of the total payment.";
     if (checked[0] === true) {
       try {
         firestore
@@ -85,7 +85,7 @@ export default function WithdrawalRequest(props) {
             withdraw_status: "Completed",
           })
           .then(alert(message));
-        // router.push(`/update?redirect=${redirect}`);
+        router.push("/requestwithdrawal");
       } catch (error) {
         console.log(error);
         alert(error);

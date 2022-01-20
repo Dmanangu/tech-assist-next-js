@@ -52,7 +52,7 @@ function DeleteUser(props) {
   return (
     <Layout>
       <div className={delStyles.deleteContainer}>
-        <Paper style={{ maxHeight: 750, overflow: "auto" }}>
+        <Paper style={{ maxHeight: 700, overflow: "auto" }}>
           <Grid container spacing={1}>
             <TableContainer>
               <Table>

@@ -44,8 +44,19 @@ export default function Clients(props) {
   // console.log(usersClient);
 
   // const handleChange = (e, props) => {
-  //   search: e.target.value,
-  //   () => {i}
+  //   {
+  //     search: e.target.usersClient;
+  //   }
+  //   () => {
+  //     if (search && search.length >= 1) {
+  //       getResults(ownProps);
+  //     }
+  //   };
+  // };
+  // const getResults = (ownProps) => {
+  //   const filteredClient = ownProps.filter((users) => {
+  //     return users.fullname.toLowerCase().includes(search.toLowerCase());
+  //   });
   // };
   return (
     <Layout title="Clients">

@@ -34,7 +34,7 @@ export default function PaymentHistory(props) {
   //firebase
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((payment) => {
-    return payment;
+    return payment.payment_status.toLowerCase().includes("completed");
   });
 
   //firebase
