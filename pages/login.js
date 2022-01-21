@@ -31,7 +31,7 @@ const Login = () => {
       alert("Login Successful");
       router.push("/clients");
     } else {
-      alert("Login an Admin Account");
+      alert("Invalid Email or Password!");
     }
   };
 
@@ -41,12 +41,12 @@ const Login = () => {
         <Card className={classes.loginCard}>
           <List>
             <ListItem>
-              <Typography>USERNAME:</Typography>
+              <Typography>EMAIL:&emsp;&emsp;&ensp;</Typography>
               <TextField
                 variant="outlined"
                 fullWidth
                 id="email"
-                label="USERNAME"
+                label="EMAIL"
                 type="email"
                 ref={emailRef}
                 inputProps={{ type: "email" }}
