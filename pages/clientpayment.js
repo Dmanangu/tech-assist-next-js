@@ -83,7 +83,9 @@ export default function ClientPayment(props) {
                               <TableCell>
                                 <img
                                   component="img"
-                                  src={payment.imageUrl}
+                                  src={
+                                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                  }
                                   height={100}
                                   width={175}
                                   alt={payment.from}

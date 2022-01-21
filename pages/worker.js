@@ -57,9 +57,11 @@ export default function Worker(props) {
                       <TableCell>
                         <img
                           component="img"
-                          image={users.imageUrl}
+                          src={
+                            "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                          }
                           height={200}
-                          width={300}
+                          width={250}
                           alt={users.fullname}
                           align="left"
                         />

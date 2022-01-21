@@ -16,6 +16,7 @@ import clientStyles from "./css/client.module.css";
 import { postToJSON, firestore } from "../lib/firebase";
 import Image from "next/image";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 //
 
 export async function getServerSideProps() {
@@ -37,26 +38,21 @@ export default function Clients(props) {
   //   router.push("/")
   // }
   const [posts, setPosts] = useState(props.posts);
+  const router = useRouter();
 
   const usersClient = posts.filter((users) => {
     return users.jobdescription.toLowerCase().includes("client");
   });
   // console.log(usersClient);
 
-  // const handleChange = (e, props) => {
-  //   {
-  //     search: e.target.usersClient;
-  //   }
-  //   () => {
-  //     if (search && search.length >= 1) {
-  //       getResults(ownProps);
-  //     }
-  //   };
+  // const filterSearch = ({ usersClient }) => {
+  //   const path = router.pathname;
+  //   const { query } = router;
+  //   if (usersClient.users) query.usersClient.users = usersClient.users;
   // };
-  // const getResults = (ownProps) => {
-  //   const filteredClient = ownProps.filter((users) => {
-  //     return users.fullname.toLowerCase().includes(search.toLowerCase());
-  //   });
+
+  // const clientSearchHandler = (e) => {
+  //   filterSearch({ usersClient: e.target.value });
   // };
   return (
     <Layout title="Clients">
@@ -66,7 +62,8 @@ export default function Clients(props) {
             className={clientStyles.search}
             type="search"
             placeholder="Search Client Here"
-            onChange={(e) => handleChange(e, usersClient)}
+            // value={usersClient.users}
+            // onChange={(e) => clientSearchHandler(usersClient)}
           />
         </div>
         <div className={clientStyles.clientContainer}>
@@ -80,9 +77,12 @@ export default function Clients(props) {
                         <TableCell>
                           <img
                             component="img"
-                            image={users.imageUrl}
+                            // image={users.imageUrl}
+                            src={
+                              "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                            }
                             height={200}
-                            width={300}
+                            width={250}
                             alt={users.fullname}
                             align="left"
                           />

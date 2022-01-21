@@ -54,9 +54,7 @@ function UserProfile(props) {
                 <img
                   component="img"
                   // image={profile.imageUrl}
-                  src={
-                    "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                  }
+                  src={"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                   height={200}
                   width={200}
                   alt={profile.fullname}
@@ -103,10 +101,6 @@ function UserProfile(props) {
               >
                 <img
                   component="img"
-                  // image={profile.validID}
-                  // src={
-                  //   "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                  // }
                   src={profile.validID}
                   height={290}
                   width={300}
@@ -128,7 +122,7 @@ function UserProfile(props) {
                 >
                   <img
                     component="img"
-                    src={profile.validID}
+                    src={profile.jobdescription}
                     height={280}
                     width={300}
                     alt={profile.fullname}

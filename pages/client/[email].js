@@ -66,10 +66,8 @@ function UserProfile(props) {
               <CardContent>
                 <img
                   component="img"
-                  src={profile.imageUrl}
-                  // src={
-                  //   "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                  // }
+                  // src={profile.imageUrl}
+                  src={"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                   height={250}
                   width={350}
                   alt={profile.fullname}
