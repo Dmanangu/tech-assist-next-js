@@ -6,19 +6,21 @@ import {
   TextField,
   Button,
   Typography,
+  Link,
 } from "@material-ui/core";
 import React, { useContext, useRef } from "react";
 import useStyles from "../utils/styles";
 import { useUserContext } from "../lib/userContext";
 import { useRouter } from "next/router";
+import NextLink from "next/link";
 
-export default function Login() {
+const Login = () => {
   const classes = useStyles();
   const router = useRouter();
 
   const emailRef = useRef();
   const psdRef = useRef();
-  const { user, signInUser } = useUserContext();
+  const { signInUser, forgotPassword } = useUserContext();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -73,9 +75,15 @@ export default function Login() {
                 Login
               </Button>
             </ListItem>
+            <NextLink href={"/register"} passHref>
+              <Typography>
+                <Link>Register?</Link>
+              </Typography>
+            </NextLink>
           </List>
         </Card>
       </form>
     </div>
   );
-}
+};
+export default Login;
