@@ -7,18 +7,35 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import useStyles from "../utils/styles";
-import { UserContext } from "../lib/context";
+import { useUserContext } from "../lib/userContext";
 import { useRouter } from "next/router";
 
 export default function Login() {
   const classes = useStyles();
   const router = useRouter();
 
+  const emailRef = useRef();
+  const psdRef = useRef();
+  const { user, signInUser } = useUserContext();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = psdRef.current.value;
+    if (email && password) {
+      signInUser(email, password);
+      alert("Login Successful");
+      router.push("/clients");
+    } else {
+      alert("Login an Admin Account");
+    }
+  };
+
   return (
     <div title="Login">
-      <form>
+      <form onSubmit={onSubmit}>
         <Card className={classes.loginCard}>
           <List>
             <ListItem>
@@ -28,6 +45,8 @@ export default function Login() {
                 fullWidth
                 id="email"
                 label="USERNAME"
+                type="email"
+                ref={emailRef}
                 inputProps={{ type: "email" }}
               ></TextField>
             </ListItem>
@@ -38,11 +57,19 @@ export default function Login() {
                 fullWidth
                 id="password"
                 label="PASSWORD"
+                type="password"
+                ref={psdRef}
                 inputProps={{ type: "password" }}
               ></TextField>
             </ListItem>
             <ListItem>
-              <Button className={classes.color} fullWidth variant="contained">
+              <Button
+                className={classes.color}
+                fullWidth
+                variant="contained"
+                type="submit"
+                // onClick={handleSubmit}
+              >
                 Login
               </Button>
             </ListItem>

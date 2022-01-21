@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { useEffect } from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-
+import { UserContextProvider } from "../lib/userContext";
 //
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -10,9 +10,12 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
   return (
     <PayPalScriptProvider>
-      <Component {...pageProps} />
+      <UserContextProvider>
+        <Component {...pageProps} />
+      </UserContextProvider>
     </PayPalScriptProvider>
   );
 }
