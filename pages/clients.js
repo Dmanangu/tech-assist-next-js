@@ -52,55 +52,53 @@ export default function Clients(props) {
   //   filterSearch({ usersClient: e.target.value });
   // };
   return (
-    <Layout title="Clients">
+    <div>
       <div>
-        <div>
-          <input
-            className={clientStyles.search}
-            type="search"
-            placeholder="Search Client Here"
-            // value={usersClient.users}
-            // onChange={(e) => clientSearchHandler(usersClient)}
-          />
-        </div>
-        <div className={clientStyles.clientContainer}>
-          <Paper style={{ maxHeight: 700, overflow: "auto" }}>
-            <Card>
-              {usersClient.map((users) => (
-                <CardActionArea>
-                  <CardContent sx={{ display: "flex" }}>
-                    <NextLink href={`./client/${users.email}`}>
-                      <Table>
-                        <TableCell>
-                          <img
-                            component="img"
-                            // image={users.imageUrl}
-                            src={
-                              "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                            }
-                            height={200}
-                            width={250}
-                            alt={users.fullname}
-                            align="left"
-                          />
-                          <Typography variant="h3">
-                            <strong>{users.fullname}</strong>
-                          </Typography>
-                          <Typography variant="h4">{users.address}</Typography>
-                          <Typography variant="h4">
-                            {users.phoneNumber}
-                          </Typography>
-                          <Typography variant="h4">{users.username}</Typography>
-                        </TableCell>
-                      </Table>
-                    </NextLink>
-                  </CardContent>
-                </CardActionArea>
-              ))}
-            </Card>
-          </Paper>
-        </div>
+        <input
+          className={clientStyles.search}
+          type="search"
+          placeholder="Search Client Here"
+          // value={usersClient.users}
+          // onChange={(e) => clientSearchHandler(usersClient)}
+        />
       </div>
-    </Layout>
+      <div className={clientStyles.clientContainer}>
+        <Paper style={{ maxHeight: 700, overflow: "auto" }}>
+          <Card>
+            {usersClient.map((users) => (
+              <CardActionArea>
+                <CardContent sx={{ display: "flex" }}>
+                  <NextLink href={`./client/${users.email}`}>
+                    <Table>
+                      <TableCell>
+                        <img
+                          component="img"
+                          // image={users.imageUrl}
+                          src={
+                            "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                          }
+                          height={200}
+                          width={250}
+                          alt={users.fullname}
+                          align="left"
+                        />
+                        <Typography variant="h3">
+                          <strong>{users.fullname}</strong>
+                        </Typography>
+                        <Typography variant="h4">{users.address}</Typography>
+                        <Typography variant="h4">
+                          {users.phoneNumber}
+                        </Typography>
+                        <Typography variant="h4">{users.username}</Typography>
+                      </TableCell>
+                    </Table>
+                  </NextLink>
+                </CardContent>
+              </CardActionArea>
+            ))}
+          </Card>
+        </Paper>
+      </div>
+    </div>
   );
 }

@@ -40,91 +40,85 @@ export default function RequestWithdrawal(props) {
   });
   //firebase
   return (
-    <Layout>
-      <div>
-        <div className={paymentHistoryStyles.paymentHistoryContainer}>
-          <div className={paymentStyles.paymentButtonContainer}>
-            <NextLink href={"/paymenthistory"} passHref>
-              <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
-            </NextLink>
-            <NextLink href={"/requestwithdrawal"} passHref>
-              <button className={paymentStyles.buttons}>
-                REQUEST WITHDRAWAL
-              </button>
-            </NextLink>
-            <NextLink href={"/clientpayment"} passHref>
-              <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
-            </NextLink>
-          </div>
-          <div className={paymentHistoryStyles.transactionHistory}>
-            <div>
-              <Paper
-                style={{ maxHeight: 750, overflow: "auto", marginLeft: 50 }}
+    <div>
+      <div className={paymentHistoryStyles.paymentHistoryContainer}>
+        <div className={paymentStyles.paymentButtonContainer}>
+          <NextLink href={"/paymenthistory"} passHref>
+            <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
+          </NextLink>
+          <NextLink href={"/requestwithdrawal"} passHref>
+            <button className={paymentStyles.buttons}>
+              REQUEST WITHDRAWAL
+            </button>
+          </NextLink>
+          <NextLink href={"/clientpayment"} passHref>
+            <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
+          </NextLink>
+        </div>
+        <div className={paymentHistoryStyles.transactionHistory}>
+          <div>
+            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 50 }}>
+              <Table
+                style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
               >
-                <Table
-                  style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
-                >
-                  <TableRow>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> &emsp; Date &emsp; </Typography>
-                    </TableCell>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> &emsp;Name&emsp; </Typography>
-                    </TableCell>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> &emsp;Amount&emsp; </Typography>
-                    </TableCell>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> Withdrawal </Typography>
-                      <Typography variant="h4"> &emsp;Method </Typography>
-                    </TableCell>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> &emsp;Status&emsp; </Typography>
-                    </TableCell>
-                  </TableRow>
+                <TableRow>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> &emsp; Date &emsp; </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> &emsp;Name&emsp; </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> &emsp;Amount&emsp; </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> Withdrawal </Typography>
+                    <Typography variant="h4"> &emsp;Method </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> &emsp;Status&emsp; </Typography>
+                  </TableCell>
+                </TableRow>
 
-                  {usersClient.map((withdrawal) => (
-                    <NextLink href={`./withdrawal/${withdrawal.withdrawer}`}>
-                      <TableRow
-                        style={{
-                          backgroundColor: "#ffecec",
-                          borderStyle: "solid",
-                        }}
-                      >
-                        <TableCell>
-                          <Typography variant="h6">
-                            {withdrawal.date}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="h6" align="center">
-                            {withdrawal.withdrawer}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="h6" align="center">
-                            PHP {withdrawal.amount}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="h6" align="center">
-                            {withdrawal.paymentMethod}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="h6" align="center">
-                            {withdrawal.withdraw_status}
-                          </Typography>
-                        </TableCell>
-                      </TableRow>
-                    </NextLink>
-                  ))}
-                </Table>
-              </Paper>
-            </div>
+                {usersClient.map((withdrawal) => (
+                  <NextLink href={`./withdrawal/${withdrawal.withdrawer}`}>
+                    <TableRow
+                      style={{
+                        backgroundColor: "#ffecec",
+                        borderStyle: "solid",
+                      }}
+                    >
+                      <TableCell>
+                        <Typography variant="h6">{withdrawal.date}</Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="h6" align="center">
+                          {withdrawal.withdrawer}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="h6" align="center">
+                          PHP {withdrawal.amount}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="h6" align="center">
+                          {withdrawal.paymentMethod}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="h6" align="center">
+                          {withdrawal.withdraw_status}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  </NextLink>
+                ))}
+              </Table>
+            </Paper>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

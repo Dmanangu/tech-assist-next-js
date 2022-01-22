@@ -15,24 +15,22 @@ import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 export default function Payments({ params }) {
   const styles = useStyles();
   return (
-    <Layout>
-      <div>
-        <div className={paymentStyles.paymentContainer}>
-          <div className={paymentStyles.paymentButtonContainer}>
-            <NextLink href={"/paymenthistory"} passHref>
-              <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
-            </NextLink>
-            <NextLink href={"/requestwithdrawal"} passHref>
-              <button className={paymentStyles.buttons}>
-                REQUEST WITHDRAWAL
-              </button>
-            </NextLink>
-            <NextLink href={"/clientpayment"} passHref>
-              <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
-            </NextLink>
-          </div>
+    <div>
+      <div className={paymentStyles.paymentContainer}>
+        <div className={paymentStyles.paymentButtonContainer}>
+          <NextLink href={"/paymenthistory"} passHref>
+            <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
+          </NextLink>
+          <NextLink href={"/requestwithdrawal"} passHref>
+            <button className={paymentStyles.buttons}>
+              REQUEST WITHDRAWAL
+            </button>
+          </NextLink>
+          <NextLink href={"/clientpayment"} passHref>
+            <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
+          </NextLink>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

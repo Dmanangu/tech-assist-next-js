@@ -92,7 +92,7 @@ export default function WithdrawalRequest(props) {
   };
   const styles = useStyles();
   return (
-    <Layout>
+    <div>
       <div>
         <div className={paymentStyles.paymentContainer}>
           <Grid container spacing={3}>
@@ -229,6 +229,6 @@ export default function WithdrawalRequest(props) {
           </Grid>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

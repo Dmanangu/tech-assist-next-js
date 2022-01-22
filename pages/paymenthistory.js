@@ -39,87 +39,81 @@ export default function PaymentHistory(props) {
 
   //firebase
   return (
-    <Layout>
-      <div>
-        <div className={paymentHistoryStyles.paymentHistoryContainer}>
-          <div className={paymentStyles.paymentButtonContainer}>
-            <NextLink href={"/paymenthistory"} passHref>
-              <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
-            </NextLink>
-            <NextLink href={"/requestwithdrawal"} passHref>
-              <button className={paymentStyles.buttons}>
-                REQUEST WITHDRAWAL
-              </button>
-            </NextLink>
-            <NextLink href={"/clientpayment"} passHref>
-              <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
-            </NextLink>
-          </div>
-          <div className={paymentHistoryStyles.transactionHistory}>
-            <div>
-              <Paper
-                style={{ maxHeight: 750, overflow: "auto", marginLeft: 40 }}
+    <div>
+      <div className={paymentHistoryStyles.paymentHistoryContainer}>
+        <div className={paymentStyles.paymentButtonContainer}>
+          <NextLink href={"/paymenthistory"} passHref>
+            <button className={paymentStyles.buttons}>PAYMENT HISTORY</button>
+          </NextLink>
+          <NextLink href={"/requestwithdrawal"} passHref>
+            <button className={paymentStyles.buttons}>
+              REQUEST WITHDRAWAL
+            </button>
+          </NextLink>
+          <NextLink href={"/clientpayment"} passHref>
+            <button className={paymentStyles.buttons}>CLIENT PAYMENTS</button>
+          </NextLink>
+        </div>
+        <div className={paymentHistoryStyles.transactionHistory}>
+          <div>
+            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 40 }}>
+              <Table
+                style={{
+                  backgroundColor: "#b4b8c7",
+                  borderStyle: "solid",
+                }}
               >
-                <Table
-                  style={{
-                    backgroundColor: "#b4b8c7",
-                    borderStyle: "solid",
-                  }}
-                >
-                  <TableRow>
+                <TableRow>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> Date </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4">From Client's Payment </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4"> To Worker </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4">Amount </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4">Status </Typography>
+                  </TableCell>
+                </TableRow>
+                {usersClient.map((payment) => (
+                  <TableRow style={{ backgroundColor: "#f0dcdc" }}>
                     <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> Date </Typography>
-                    </TableCell>
-                    <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4">
-                        From Client's Payment{" "}
+                      <Typography>
+                        <b>{payment.date}</b>
                       </Typography>
                     </TableCell>
                     <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4"> To Worker </Typography>
+                      <Typography variant="h6">
+                        <b>{payment.from}</b>
+                      </Typography>
                     </TableCell>
                     <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4">Amount </Typography>
+                      <Typography variant="h6">
+                        <b>{payment.to}</b>
+                      </Typography>
                     </TableCell>
                     <TableCell style={{ borderStyle: "solid" }}>
-                      <Typography variant="h4">Status </Typography>
+                      <Typography variant="h6">
+                        <b>PHP {payment.amount}</b>
+                      </Typography>
+                    </TableCell>
+                    <TableCell style={{ borderStyle: "solid" }}>
+                      <Typography variant="h6">
+                        <b>{payment.payment_status}</b>
+                      </Typography>
                     </TableCell>
                   </TableRow>
-                  {usersClient.map((payment) => (
-                    <TableRow style={{ backgroundColor: "#f0dcdc" }}>
-                      <TableCell style={{ borderStyle: "solid" }}>
-                        <Typography>
-                          <b>{payment.date}</b>
-                        </Typography>
-                      </TableCell>
-                      <TableCell style={{ borderStyle: "solid" }}>
-                        <Typography variant="h6">
-                          <b>{payment.from}</b>
-                        </Typography>
-                      </TableCell>
-                      <TableCell style={{ borderStyle: "solid" }}>
-                        <Typography variant="h6">
-                          <b>{payment.to}</b>
-                        </Typography>
-                      </TableCell>
-                      <TableCell style={{ borderStyle: "solid" }}>
-                        <Typography variant="h6">
-                          <b>PHP {payment.amount}</b>
-                        </Typography>
-                      </TableCell>
-                      <TableCell style={{ borderStyle: "solid" }}>
-                        <Typography variant="h6">
-                          <b>{payment.payment_status}</b>
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </Table>
-              </Paper>
-            </div>
+                ))}
+              </Table>
+            </Paper>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

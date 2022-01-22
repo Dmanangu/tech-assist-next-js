@@ -1,0 +1,11 @@
+[
+    {
+        "firstName": "ADMIN",
+        "lastName": "ACCOUNT",
+        "username": "ADMIN_ACCOUNT",
+        "hash": "$2a$10$1EMztwiLT39HLxd6KBOcSOFwamue4Qa0zF.vyeAMvqyFd1pq.y3Km",
+        "id": 1,
+        "dateCreated": "2022-01-22T10:33:48.772Z",
+        "dateUpdated": "2022-01-22T10:33:48.772Z"
+    }
+]

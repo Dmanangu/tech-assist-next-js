@@ -50,7 +50,7 @@ function DeleteUser(props) {
     }
   };
   return (
-    <Layout>
+    <div>
       <div className={delStyles.deleteContainer}>
         <Paper style={{ maxHeight: 700, overflow: "auto" }}>
           <Grid container spacing={1}>
@@ -126,7 +126,7 @@ function DeleteUser(props) {
           </Grid>
         </Paper>
       </div>
-    </Layout>
+    </div>
   );
 }
 
