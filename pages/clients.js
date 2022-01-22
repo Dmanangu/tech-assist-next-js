@@ -39,7 +39,7 @@ export default function Clients(props) {
   const usersClient = posts.filter((users) => {
     return users.jobdescription.toLowerCase().includes("client");
   });
-  console.log(usersClient);
+
   //
 
   // const filterSearch = ({ usersClient }) => {

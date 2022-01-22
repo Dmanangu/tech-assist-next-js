@@ -72,7 +72,9 @@ export default function WithdrawalRequest(props) {
     var message =
       "We have already sent PHP " +
       (usersClient[0].amount - usersClient[0].amount * 0.08) +
-      " to your GCASH account from Tech Assist. Thank you for improving your service and loyalty to clients. Take note that Tech Assist takes 8% of the total payment.";
+      " to your " +
+      usersClient[0].paymentMethod +
+      " account from Tech Assist. Thank you for improving your service and loyalty to clients. Take note that Tech Assist takes 8% of the total payment.";
     if (checked[0] === true) {
       try {
         firestore
@@ -160,7 +162,7 @@ export default function WithdrawalRequest(props) {
                   </Typography>
 
                   <Typography variant="h5" align="center">
-                    GCASH NAME
+                    {userProfile.paymentMethod} NAME
                   </Typography>
 
                   <CardContent>
@@ -177,7 +179,7 @@ export default function WithdrawalRequest(props) {
                   </CardContent>
 
                   <Typography variant="h5" align="center">
-                    GCASH NUMBER
+                    {userProfile.paymentMethod} NUMBER
                   </Typography>
 
                   <CardContent>

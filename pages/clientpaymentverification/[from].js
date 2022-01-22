@@ -152,7 +152,7 @@ export default function ClientPaymentVerification(props) {
                     </Typography>
 
                     <Typography variant="h5" align="center">
-                      GCASH NUMBER
+                      {payment.PaymentMethod} NUMBER
                     </Typography>
 
                     <Typography
