@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { NavLink } from ".";
 import { userService } from "services";
 
+//
+
 export { Nav };
 
 function Nav() {
@@ -22,7 +24,7 @@ function Nav() {
 
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <div className="navbar-nav" style={{ marginLeft: 1500 }}>
+      <div className="navbar-nav" style={{ marginLeft: "80%" }}>
         <NavLink href="/clients" exact className="nav-item nav-link">
           CLIENTS
         </NavLink>

@@ -27,7 +27,6 @@ export async function getServerSideProps() {
   // .limit(LIMIT);
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
-  const posts2 = (await postsQuery.get()).docs.map(postToJSON);
   // console.log(posts);
   return {
     props: { posts }, // will be passed to the page component as props
@@ -37,24 +36,26 @@ export async function getServerSideProps() {
 //
 
 export default function WithdrawalRequest(props) {
-  const { user } = useContext(UserContext);
-
   //
   const [posts, setPosts] = useState(props.posts);
+
+  const usersClient = posts.filter((withdrawal) => {
+    return withdrawal.withdraw_status.toLowerCase().includes("pending");
+  });
 
   const router = useRouter();
   const { withdrawer } = router.query;
 
-  const usersClient = posts.filter((withdrawal) => {
-    return withdrawal;
-  });
-
-  const profile = usersClient.find(
+  const userProfile = usersClient.find(
     (withdrawal) => withdrawal.withdrawer === withdrawer
   );
 
-  if (!profile) {
-    return <div>User not found</div>;
+  if (!userProfile) {
+    return (
+      <Typography align="center" variant="h3" style={{ marginTop: 400 }}>
+        This user has already processed their withdrawal{" "}
+      </Typography>
+    );
   }
 
   const [status, setStatus] = React.useState("");
@@ -92,7 +93,7 @@ export default function WithdrawalRequest(props) {
   };
   const styles = useStyles();
   return (
-    <div>
+    <Layout>
       <div>
         <div className={paymentStyles.paymentContainer}>
           <Grid container spacing={3}>
@@ -117,118 +118,118 @@ export default function WithdrawalRequest(props) {
             </Grid>
 
             <Grid item xs={6} style={{ marginLeft: 50 }}>
-              {usersClient.map((withdrawal) => (
-                <Card style={{ backgroundColor: "#efe2e2" }}>
-                  <Typography variant="h5">
-                    <b>REQUEST WITHDRAWAL</b>
+              {/* {usersClient.map((withdrawal) => ( */}
+              <Card style={{ backgroundColor: "#efe2e2" }}>
+                <Typography variant="h5">
+                  <b>REQUEST WITHDRAWAL</b>
+                </Typography>
+
+                <CardContent align="center">
+                  <img
+                    component="img"
+                    //   src={profile.imageUrl}
+                    src={
+                      "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    }
+                    height={150}
+                    width={125}
+                    borderRadius={30}
+                    //   alt={profile.fullname}
+                  />
+
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    border={2}
+                    padding={3}
+                    maxWidth={500}
+                    backgroundColor="#ffecec"
+                  >
+                    <b>Verification:/TechAssist Okay</b>
+                    <Checkbox
+                      checked={checked[0]}
+                      onChange={checkerStatus}
+                      color="success"
+                      style={{
+                        borderRaduis: 10,
+                        backgroundColor: "#3ed21b",
+                        borderStyle: "none",
+                        fontSize: "30px",
+                      }}
+                    />
                   </Typography>
 
-                  <CardContent align="center">
-                    <img
-                      component="img"
-                      //   src={profile.imageUrl}
-                      src={
-                        "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                      }
-                      height={150}
-                      width={125}
-                      borderRadius={30}
-                      //   alt={profile.fullname}
-                    />
+                  <Typography variant="h5" align="center">
+                    GCASH NAME
+                  </Typography>
 
+                  <CardContent>
                     <Typography
                       variant="h5"
                       align="center"
                       border={2}
-                      padding={3}
+                      borderRadius={10}
                       maxWidth={500}
-                      backgroundColor="#ffecec"
+                      backgroundColor="white"
                     >
-                      <b>Verification:/TechAssist Okay</b>
-                      <Checkbox
-                        checked={checked[0]}
-                        onChange={checkerStatus}
-                        color="success"
-                        style={{
-                          borderRaduis: 10,
-                          backgroundColor: "#3ed21b",
-                          borderStyle: "none",
-                          fontSize: "30px",
-                        }}
-                      />
+                      {userProfile.withdrawer}
                     </Typography>
-
-                    <Typography variant="h5" align="center">
-                      GCASH NAME
-                    </Typography>
-
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        align="center"
-                        border={2}
-                        borderRadius={10}
-                        maxWidth={500}
-                        backgroundColor="white"
-                      >
-                        {withdrawal.withdrawer}
-                      </Typography>
-                    </CardContent>
-
-                    <Typography variant="h5" align="center">
-                      GCASH NUMBER
-                    </Typography>
-
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        align="center"
-                        border={2}
-                        borderRadius={10}
-                        maxWidth={500}
-                        backgroundColor="white"
-                      >
-                        {withdrawal.phone}
-                      </Typography>
-                    </CardContent>
-
-                    <Typography variant="h5" align="center">
-                      AMOUNT
-                    </Typography>
-
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        align="center"
-                        border={2}
-                        borderRadius={10}
-                        maxWidth={500}
-                        backgroundColor="white"
-                      >
-                        {withdrawal.amount}
-                      </Typography>
-                    </CardContent>
                   </CardContent>
-                  <CardContent align="center">
-                    <Button
-                      style={{
-                        backgroundColor: "#ed9220",
-                        borderRadius: 20,
-                        width: 100,
-                      }}
-                      onClick={() => submitHandlerForm(withdrawal.id)}
-                      variant="contained"
+
+                  <Typography variant="h5" align="center">
+                    GCASH NUMBER
+                  </Typography>
+
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      border={2}
+                      borderRadius={10}
+                      maxWidth={500}
+                      backgroundColor="white"
                     >
-                      Send
-                    </Button>
+                      {userProfile.phone}
+                    </Typography>
                   </CardContent>
-                </Card>
-              ))}
+
+                  <Typography variant="h5" align="center">
+                    AMOUNT
+                  </Typography>
+
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      border={2}
+                      borderRadius={10}
+                      maxWidth={500}
+                      backgroundColor="white"
+                    >
+                      {userProfile.amount}
+                    </Typography>
+                  </CardContent>
+                </CardContent>
+                <CardContent align="center">
+                  <Button
+                    style={{
+                      backgroundColor: "#ed9220",
+                      borderRadius: 20,
+                      width: 100,
+                    }}
+                    onClick={() => submitHandlerForm(userProfile.id)}
+                    variant="contained"
+                  >
+                    Send
+                  </Button>
+                </CardContent>
+              </Card>
+              {/* ))} */}
             </Grid>
             <Grid item xs={3}></Grid>
           </Grid>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

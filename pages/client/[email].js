@@ -58,7 +58,7 @@ function UserProfile(props) {
   // }
 
   return (
-    <div>
+    <Layout>
       <div className={slugStyles.slugContainer}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={4}>
@@ -168,7 +168,7 @@ function UserProfile(props) {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </Layout>
   );
 }
 

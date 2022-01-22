@@ -38,7 +38,7 @@ export default function Worker(props) {
     return users.isClient.toLowerCase().includes("false");
   });
   return (
-    <div title="Worker">
+    <Layout title="Worker">
       <div>
         <input
           className={workerStyles.search}
@@ -82,6 +82,6 @@ export default function Worker(props) {
           </Card>
         </Paper>
       </div>
-    </div>
+    </Layout>
   );
 }

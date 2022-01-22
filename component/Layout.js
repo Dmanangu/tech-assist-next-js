@@ -14,7 +14,7 @@ function Layout({ children }) {
   const classes = useStyles();
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Tech Assist</title>
       </Head>
       <AppBar position="static" className={classes.navbar}>
@@ -35,7 +35,7 @@ function Layout({ children }) {
             </NextLink>
           </div>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Container className={classes.main}>{children}</Container>
       {/* <footer className={classes.footer}>
         <Typography>All rights reserved. TechAssist 2021-2022.</Typography>

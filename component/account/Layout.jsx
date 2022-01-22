@@ -1,25 +1,24 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-import { userService } from 'services';
+import { userService } from "services";
+import useStyles from "utils/styles";
+import { Container } from "@material-ui/core";
 
 export { Layout };
 
 function Layout({ children }) {
-    const router = useRouter();
+  const classes = useStyles();
+  const router = useRouter();
 
-    useEffect(() => {
-        // redirect to home if already logged in
-        if (userService.userValue) {
-            router.push('/');
-        }
+  useEffect(() => {
+    // redirect to home if already logged in
+    if (userService.userValue) {
+      router.push("/");
+    }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return (
-        <div className="col-md-6 offset-md-3 mt-5">
-            {children}
-        </div>
-    );
+  return <div className="col-md-6 offset-md-3 mt-5">{children}</div>;
 }

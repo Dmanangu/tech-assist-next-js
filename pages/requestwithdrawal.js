@@ -13,6 +13,7 @@ import paymentHistoryStyles from "./css/paymenthistory.module.css";
 import useStyles from "../utils/styles";
 import NextLink from "next/link";
 import { postToJSON, firestore } from "../lib/firebase";
+import { CardActionArea } from "@material-ui/core";
 
 //
 
@@ -40,7 +41,7 @@ export default function RequestWithdrawal(props) {
   });
   //firebase
   return (
-    <div>
+    <Layout>
       <div className={paymentHistoryStyles.paymentHistoryContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>
@@ -81,7 +82,7 @@ export default function RequestWithdrawal(props) {
                 </TableRow>
 
                 {usersClient.map((withdrawal) => (
-                  <NextLink href={`./withdrawal/${withdrawal.withdrawer}`}>
+                  <NextLink href={`./userwithdrawal/${withdrawal.withdrawer}`}>
                     <TableRow
                       style={{
                         backgroundColor: "#ffecec",
@@ -119,6 +120,6 @@ export default function RequestWithdrawal(props) {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

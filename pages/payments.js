@@ -15,7 +15,7 @@ import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 export default function Payments({ params }) {
   const styles = useStyles();
   return (
-    <div>
+    <Layout>
       <div className={paymentStyles.paymentContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>
@@ -31,6 +31,6 @@ export default function Payments({ params }) {
           </NextLink>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

@@ -39,7 +39,7 @@ export default function PaymentHistory(props) {
 
   //firebase
   return (
-    <div>
+    <Layout>
       <div className={paymentHistoryStyles.paymentHistoryContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>
@@ -114,6 +114,6 @@ export default function PaymentHistory(props) {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

@@ -41,7 +41,7 @@ export default function ClientPayment(props) {
   });
   //firebase
   return (
-    <div>
+    <Layout>
       <div className={paymentHistoryStyles.paymentHistoryContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>
@@ -109,6 +109,6 @@ export default function ClientPayment(props) {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

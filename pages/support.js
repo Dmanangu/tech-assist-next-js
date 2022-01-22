@@ -37,39 +37,41 @@ export default function Support() {
   if (!user) return null;
 
   return (
-    <div className={supportStyles.supportContainer}>
-      <Card className={classes.supportCard}>
-        <MenuList dense>
-          <Typography variant="h2" className={classes.center}>
-            SETTINGS
-          </Typography>
-          <Divider />
-          <MenuItem>
-            <Typography variant="h4" style={{ marginLeft: 10 }}>
-              ACCOUNT SETTINGS
+    <Layout>
+      <div className={supportStyles.supportContainer}>
+        <Card className={classes.supportCard}>
+          <MenuList dense>
+            <Typography variant="h2" className={classes.center}>
+              SETTINGS
             </Typography>
-          </MenuItem>
-          <MenuItem>
-            <NextLink href={"/delete"} passHref>
+            <Divider />
+            <MenuItem>
               <Typography variant="h4" style={{ marginLeft: 10 }}>
-                DELETE
+                ACCOUNT SETTINGS
               </Typography>
-            </NextLink>
-          </MenuItem>
-          <MenuItem>
-            <NextLink href={"/update"} passHref>
-              <Typography variant="h4" style={{ marginLeft: 10 }}>
-                UPDATE
-              </Typography>
-            </NextLink>
-          </MenuItem>
-          <MenuItem>
-            <a onClick={logout} className="nav-item nav-link">
-              <Typography variant="h4">LOGOUT</Typography>
-            </a>
-          </MenuItem>
-        </MenuList>
-      </Card>
-    </div>
+            </MenuItem>
+            <MenuItem>
+              <NextLink href={"/delete"} passHref>
+                <Typography variant="h4" style={{ marginLeft: 10 }}>
+                  DELETE
+                </Typography>
+              </NextLink>
+            </MenuItem>
+            <MenuItem>
+              <NextLink href={"/update"} passHref>
+                <Typography variant="h4" style={{ marginLeft: 10 }}>
+                  UPDATE
+                </Typography>
+              </NextLink>
+            </MenuItem>
+            <MenuItem>
+              <a onClick={logout} className="nav-item nav-link">
+                <Typography variant="h4">LOGOUT</Typography>
+              </a>
+            </MenuItem>
+          </MenuList>
+        </Card>
+      </div>
+    </Layout>
   );
 }

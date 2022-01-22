@@ -76,7 +76,7 @@ export default function ClientPaymentVerification(props) {
     }
   };
   return (
-    <div>
+    <Layout>
       <div>
         <div className={paymentStyles.paymentContainer}>
           <Grid container spacing={3}>
@@ -201,6 +201,6 @@ export default function ClientPaymentVerification(props) {
           </Grid>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

@@ -11,12 +11,12 @@ import {
   TableCell,
 } from "@material-ui/core";
 import React, { useState, useContext } from "react";
-import Layout from "../component/Layout";
 import clientStyles from "./css/client.module.css";
 import { postToJSON, firestore } from "../lib/firebase";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import Layout from "component/Layout";
 //
 
 export async function getServerSideProps() {
@@ -52,7 +52,7 @@ export default function Clients(props) {
   //   filterSearch({ usersClient: e.target.value });
   // };
   return (
-    <div>
+    <Layout>
       <div>
         <input
           className={clientStyles.search}
@@ -99,6 +99,6 @@ export default function Clients(props) {
           </Card>
         </Paper>
       </div>
-    </div>
+    </Layout>
   );
 }
