@@ -36,7 +36,7 @@ function Login() {
 
   return (
     <Layout>
-      <div className="card" style={{ marginTop: 250 }}>
+      <div className="card">
         <h4 className="card-header">Login</h4>
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)}>
