@@ -27,6 +27,14 @@ const useStyles = makeStyles({
     backgroundColor: "#e3dddd",
     opacity: 0.8,
   },
+  registerCard: {
+    marginTop: 150,
+    marginLeft: 550,
+    width: 500,
+    height: 500,
+    backgroundColor: "#e3dddd",
+    opacity: 0.8,
+  },
   supportCard: {
     marginLeft: "65%",
     marginTop: "5%",

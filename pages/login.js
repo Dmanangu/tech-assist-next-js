@@ -13,6 +13,10 @@ import useStyles from "../utils/styles";
 import { useUserContext } from "../lib/userContext";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import Layout from "../component/Layout";
+import { Input } from "@mui/material";
+
+//
 
 const Login = () => {
   const classes = useStyles();
@@ -20,7 +24,7 @@ const Login = () => {
 
   const emailRef = useRef();
   const psdRef = useRef();
-  const { signInUser, forgotPassword } = useUserContext();
+  const { signInUser } = useUserContext();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +46,7 @@ const Login = () => {
           <List>
             <ListItem>
               <Typography>EMAIL:&emsp;&emsp;&ensp;</Typography>
-              <TextField
+              <input
                 variant="outlined"
                 fullWidth
                 id="email"
@@ -50,11 +54,11 @@ const Login = () => {
                 type="email"
                 ref={emailRef}
                 inputProps={{ type: "email" }}
-              ></TextField>
+              ></input>
             </ListItem>
             <ListItem>
               <Typography>PASSWORD:</Typography>
-              <TextField
+              <input
                 variant="outlined"
                 fullWidth
                 id="password"
@@ -62,7 +66,7 @@ const Login = () => {
                 type="password"
                 ref={psdRef}
                 inputProps={{ type: "password" }}
-              ></TextField>
+              ></input>
             </ListItem>
             <ListItem>
               <Button
@@ -70,16 +74,17 @@ const Login = () => {
                 fullWidth
                 variant="contained"
                 type="submit"
-                // onClick={handleSubmit}
               >
                 Login
               </Button>
             </ListItem>
-            <NextLink href={"/register"} passHref>
-              <Typography>
-                <Link>Register?</Link>
-              </Typography>
-            </NextLink>
+            <ListItem>
+              <NextLink href={"/register"} passHref>
+                <Typography>
+                  <Link>Does not have an Admin account? Register?</Link>
+                </Typography>
+              </NextLink>
+            </ListItem>
           </List>
         </Card>
       </form>

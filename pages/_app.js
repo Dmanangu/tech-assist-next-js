@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { useEffect } from "react";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 import { UserContextProvider } from "../lib/userContext";
 //
 function MyApp({ Component, pageProps }) {
@@ -12,11 +12,9 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <PayPalScriptProvider>
-      <UserContextProvider>
-        <Component {...pageProps} />
-      </UserContextProvider>
-    </PayPalScriptProvider>
+    <UserContextProvider>
+      <Component {...pageProps} />
+    </UserContextProvider>
   );
 }
 

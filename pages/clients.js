@@ -21,10 +21,6 @@ import { useRouter } from "next/router";
 
 export async function getServerSideProps() {
   const postsQuery = firestore.collectionGroup("users");
-  // .where('published', '==', true)
-  // .orderBy('createdAt', 'desc')
-  // .limit(LIMIT);
-
   const posts = (await postsQuery.get()).docs.map(postToJSON);
   // console.log(posts);
   return {
@@ -43,7 +39,8 @@ export default function Clients(props) {
   const usersClient = posts.filter((users) => {
     return users.jobdescription.toLowerCase().includes("client");
   });
-  // console.log(usersClient);
+  console.log(usersClient);
+  //
 
   // const filterSearch = ({ usersClient }) => {
   //   const path = router.pathname;

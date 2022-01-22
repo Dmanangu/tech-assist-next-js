@@ -29,7 +29,7 @@ export async function getServerSideProps() {
   // .limit(LIMIT);
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
-  // console.log(posts);
+
   return {
     props: { posts }, // will be passed to the page component as props
   };
@@ -40,12 +40,12 @@ export default function ClientPaymentVerification(props) {
   const styles = useStyles();
 
   const [posts, setPosts] = useState(props.posts);
+  const usersClient = posts.filter((payment) => {
+    return payment.payment_status.toLowerCase().includes("process");
+  });
+
   const router = useRouter();
   const { from } = router.query;
-
-  const usersClient = posts.filter((payment) => {
-    return payment;
-  });
 
   const profile = usersClient.find((payment) => payment.from === from);
 

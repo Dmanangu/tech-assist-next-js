@@ -67,10 +67,6 @@ export default function WithdrawalRequest(props) {
     setChecked([event.target.checked, event.target.checked]);
   };
 
-  // const payment = usersClient.find(
-  //   (withdrawal) => withdrawal.amount === amount
-  // );
-
   const submitHandlerForm = (e) => {
     var message =
       "We have already sent PHP " +

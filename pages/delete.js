@@ -84,7 +84,9 @@ function DeleteUser(props) {
                       <TableCell>
                         <img
                           component="img"
-                          src={users.imageUrl}
+                          src={
+                            "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                          }
                           height={40}
                           width={40}
                           alt={users.username}
