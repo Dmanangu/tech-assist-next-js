@@ -7,11 +7,12 @@ import { Link } from "component";
 import { Layout } from "component/account";
 import { userService, alertService } from "services";
 import LayoutMaster from "component/Layout";
-
+import useStyles from "utils/styles";
 export default Login;
 
 function Login() {
   const router = useRouter();
+  const classes = useStyles();
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -36,7 +37,7 @@ function Login() {
   }
 
   return (
-    <LayoutMaster>
+    <div className={classes.centerCenter}>
       <Layout>
         <div className="card">
           <h4 className="card-header">Login</h4>
@@ -86,6 +87,6 @@ function Login() {
           </div>
         </div>
       </Layout>
-    </LayoutMaster>
+    </div>
   );
 }

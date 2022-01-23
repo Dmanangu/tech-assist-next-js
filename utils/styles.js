@@ -49,6 +49,12 @@ const useStyles = makeStyles({
     textAlign: "center",
     padding: 20,
   },
+  centerCenter: {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "250px",
+  },
 });
 
 export default useStyles;
