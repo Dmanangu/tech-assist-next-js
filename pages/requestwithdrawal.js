@@ -58,29 +58,29 @@ export default function RequestWithdrawal(props) {
         </div>
         <div className={paymentHistoryStyles.transactionHistory}>
           <div>
-            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 5 }}>
+            <Paper style={{ maxHeight: 750, overflow: "auto" }}>
               <Table
                 style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
               >
                 <TableRow>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> &emsp; Date &emsp; </Typography>
+                    <Typography variant="h5"> &emsp; Date &emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> &ensp;Name&ensp;</Typography>
+                    <Typography variant="h5"> &emsp; Name &emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> &emsp;Amount&emsp; </Typography>
+                    <Typography variant="h5"> &emsp;Amount&emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> Withdrawal </Typography>
-                    <Typography variant="h4"> &emsp;Method </Typography>
+                    <Typography variant="h5"> Withdrawal </Typography>
+                    <Typography variant="h5"> &emsp;Method </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> &emsp;Status&emsp; </Typography>
+                    <Typography variant="h5"> &emsp;Status&emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4">TechAssist Status</Typography>
+                    <Typography variant="h5">TechAssist Status</Typography>
                   </TableCell>
                 </TableRow>
 
