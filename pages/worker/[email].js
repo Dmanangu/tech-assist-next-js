@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import slugStyles from "./slug.module.css";
+
 //
 
 export async function getServerSideProps() {
@@ -92,20 +93,32 @@ function UserProfile(props) {
               <Typography variant="h4">Proof of Valid ID's</Typography>
               <Container
                 style={{
-                  minWidth: 300,
-                  maxWidth: 300,
+                  minWidth: 700,
+                  maxWidth: 700,
                   minHeight: 290,
                   maxHeight: 290,
-                  overflow: "hidden",
+                  // overflow: "hidden",
                 }}
               >
-                <img
-                  component="img"
-                  src={profile.validID}
-                  height={290}
-                  width={300}
-                  alt={profile.fullname}
-                />
+                <Grid container spacing={3}>
+                  <Grid item xs={6}>
+                    <img
+                      component="img"
+                      src={profile.validID}
+                      height={290}
+                      width={300}
+                      alt={profile.fullname}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img
+                      src={profile.validID2}
+                      height={290}
+                      width={300}
+                      alt={profile.fullname}
+                    />
+                  </Grid>
+                </Grid>
               </Container>
             </Card>
             <Grid item xs={12}>
@@ -113,20 +126,43 @@ function UserProfile(props) {
                 <Typography variant="h4">Proof as a Worker</Typography>
                 <Container
                   style={{
-                    minWidth: 300,
-                    maxWidth: 300,
-                    minHeight: 290,
-                    maxHeight: 290,
-                    overflow: "hidden",
+                    minWidth: 1000,
+                    maxWidth: 1200,
+                    minHeight: 310,
+                    maxHeight: 310,
+                    //   overflow: "hidden",
                   }}
                 >
-                  <img
-                    component="img"
-                    src={profile.jobdescription}
-                    height={280}
-                    width={300}
-                    alt={profile.fullname}
-                  />
+                  <Grid container spacing={3}>
+                    <Grid item xs={4}>
+                      <img
+                        component="img"
+                        src={profile.validID3}
+                        height={280}
+                        width={300}
+                        alt={profile.fullname}
+                        margin={3}
+                      />
+                    </Grid>
+                    <Grid item xs={4}>
+                      <img
+                        component="img"
+                        src={profile.validID4}
+                        height={280}
+                        width={300}
+                        alt={profile.fullname}
+                      />
+                    </Grid>
+                    <Grid item xs={4}>
+                      <img
+                        component="img"
+                        src={profile.validID5}
+                        height={280}
+                        width={300}
+                        alt={profile.fullname}
+                      />
+                    </Grid>
+                  </Grid>
                 </Container>
               </Card>
             </Grid>

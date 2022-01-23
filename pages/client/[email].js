@@ -106,24 +106,33 @@ function UserProfile(props) {
               <Typography variant="h4">Proof of Valid ID's</Typography>
               <Container
                 style={{
-                  minWidth: 300,
-                  maxWidth: 300,
+                  minWidth: 700,
+                  maxWidth: 700,
                   minHeight: 290,
                   maxHeight: 290,
                   overflow: "hidden",
                 }}
               >
-                <img
-                  component="img"
-                  // image={profile.validID}
-                  // src={
-                  //   "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                  // }
-                  src={profile.validID}
-                  height={290}
-                  width={300}
-                  alt={profile.fullname}
-                />
+                <Grid container spacing={3}>
+                  <Grid item xs={6}>
+                    <img
+                      component="img"
+                      src={profile.validID}
+                      height={290}
+                      width={300}
+                      alt={profile.fullname}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <img
+                      component="img"
+                      src={profile.validID2}
+                      height={290}
+                      width={300}
+                      alt={profile.fullname}
+                    />
+                  </Grid>
+                </Grid>
               </Container>
             </Card>
             <Grid item xs={12}>
