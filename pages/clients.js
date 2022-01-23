@@ -29,11 +29,8 @@ export async function getServerSideProps() {
 }
 
 export default function Clients(props) {
-  // const {user} =useContext(UserContext);
-  // if(!user.jobdescription = "Admin"){
-  //   router.push("/")
-  // }
   const [posts, setPosts] = useState(props.posts);
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
   const router = useRouter();
 
   const usersClient = posts.filter((users) => {
@@ -42,15 +39,37 @@ export default function Clients(props) {
 
   //
 
-  // const filterSearch = ({ usersClient }) => {
-  //   const path = router.pathname;
-  //   const { query } = router;
-  //   if (usersClient.users) query.usersClient.users = usersClient.users;
-  // };
+  const filterSearch = ({ usersClient }) => {
+    const path = router.pathname;
+    const { query } = router;
+    if (usersClient.users) query.usersClient.users = usersClient.users;
+  };
 
-  // const clientSearchHandler = (e) => {
-  //   filterSearch({ usersClient: e.target.value });
-  // };
+  const clientSearchHandler = (e) => {
+    // useEffect(() => {
+    //   fetchUser().then(u => setUser(u));
+    // }, []);
+    const searchClient = filteredPosts;
+    // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    // console.log(searchClient);
+    // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+
+      console.log("FINDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+      console.log(filteredPosts);
+      console.log("FINDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+    } else {
+      const filter = usersClient.filter((users) => {
+        return users.fullname.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+      console.log(filter);
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    }
+  };
   return (
     <Layout>
       <div>
@@ -58,8 +77,8 @@ export default function Clients(props) {
           className={clientStyles.search}
           type="search"
           placeholder="Search Client Here"
-          // value={usersClient.users}
-          // onChange={(e) => clientSearchHandler(usersClient)}
+          value={usersClient.users}
+          onChange={clientSearchHandler}
         />
       </div>
       <div className={clientStyles.clientContainer}>

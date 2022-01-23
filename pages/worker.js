@@ -33,10 +33,31 @@ export async function getServerSideProps() {
 
 export default function Worker(props) {
   const [posts, setPosts] = useState(props.posts);
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
 
   const usersClient = posts.filter((users) => {
     return users.isClient.toLowerCase().includes("false");
   });
+
+  const filterSearch = ({ usersClient }) => {
+    const path = router.pathname;
+    const { query } = router;
+    if (usersClient.users) query.usersClient.users = usersClient.users;
+  };
+
+  const clientSearchHandler = (e) => {
+    const searchClient = filteredPosts;
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = usersClient.filter((users) => {
+        return users.fullname.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
+
   return (
     <Layout title="Worker">
       <div>
@@ -44,6 +65,8 @@ export default function Worker(props) {
           className={workerStyles.search}
           type="search"
           placeholder="Search Worker Here"
+          value={usersClient.users}
+          onChange={clientSearchHandler}
         />
       </div>
       <div className={workerStyles.workerContainer}>

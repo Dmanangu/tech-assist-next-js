@@ -79,9 +79,6 @@ export default function RequestWithdrawal(props) {
                   <TableCell style={{ borderStyle: "solid" }}>
                     <Typography variant="h5"> &emsp;Status&emsp; </Typography>
                   </TableCell>
-                  <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h5">TechAssist Status</Typography>
-                  </TableCell>
                 </TableRow>
 
                 {usersClient.map((withdrawal) => (
@@ -113,11 +110,6 @@ export default function RequestWithdrawal(props) {
                       <TableCell>
                         <Typography variant="h6" align="center">
                           {withdrawal.withdraw_status}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6" align="center">
-                          {withdrawal.service_status}
                         </Typography>
                       </TableCell>
                     </TableRow>
