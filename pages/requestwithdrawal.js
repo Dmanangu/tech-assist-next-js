@@ -58,7 +58,7 @@ export default function RequestWithdrawal(props) {
         </div>
         <div className={paymentHistoryStyles.transactionHistory}>
           <div>
-            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 50 }}>
+            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 5 }}>
               <Table
                 style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
               >
@@ -67,7 +67,7 @@ export default function RequestWithdrawal(props) {
                     <Typography variant="h4"> &emsp; Date &emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h4"> &emsp;Name&emsp; </Typography>
+                    <Typography variant="h4"> &ensp;Name&ensp;</Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
                     <Typography variant="h4"> &emsp;Amount&emsp; </Typography>
@@ -78,6 +78,9 @@ export default function RequestWithdrawal(props) {
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
                     <Typography variant="h4"> &emsp;Status&emsp; </Typography>
+                  </TableCell>
+                  <TableCell style={{ borderStyle: "solid" }}>
+                    <Typography variant="h4">TechAssist Status</Typography>
                   </TableCell>
                 </TableRow>
 
@@ -110,6 +113,11 @@ export default function RequestWithdrawal(props) {
                       <TableCell>
                         <Typography variant="h6" align="center">
                           {withdrawal.withdraw_status}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="h6" align="center">
+                          {withdrawal.service_status}
                         </Typography>
                       </TableCell>
                     </TableRow>

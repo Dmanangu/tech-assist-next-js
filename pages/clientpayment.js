@@ -86,17 +86,19 @@ export default function ClientPayment(props) {
                                   "https://cdn-icons-png.flaticon.com/512/149/149071.png"
                                 }
                                 height={100}
-                                width={175}
+                                width={100}
                                 alt={payment.from}
                                 align="left"
                               />
-                              <Typography variant="h5">
-                                FROM:<b>{payment.from} </b> &emsp; TO:
-                                <b>{payment.to}</b>
-                              </Typography>
-                              <Typography variant="h5">
-                                <b>Received:</b> {payment.message}
-                              </Typography>
+                              <TableCell>
+                                <Typography variant="h5">
+                                  FROM:<b>{payment.from} </b> &emsp; TO:
+                                  <b>{payment.to}</b>
+                                </Typography>
+                                <Typography variant="h5">
+                                  <b>Received:</b> {payment.message}
+                                </Typography>
+                              </TableCell>
                             </TableCell>
                           </Table>
                         </CardContent>
