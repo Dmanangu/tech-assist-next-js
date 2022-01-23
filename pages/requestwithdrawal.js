@@ -19,12 +19,9 @@ import { CardActionArea } from "@material-ui/core";
 
 export async function getServerSideProps() {
   const postsQuery = firestore.collectionGroup("withdrawal");
-  // .where('published', '==', true)
-  // .orderBy('createdAt', 'desc')
-  // .limit(LIMIT);
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
-  // console.log(posts);
+
   return {
     props: { posts }, // will be passed to the page component as props
   };
@@ -58,7 +55,9 @@ export default function RequestWithdrawal(props) {
         </div>
         <div className={paymentHistoryStyles.transactionHistory}>
           <div>
-            <Paper style={{ maxHeight: 750, overflow: "auto" }}>
+            <Paper
+              style={{ maxHeight: 750, overflow: "auto", marginLeft: 100 }}
+            >
               <Table
                 style={{ backgroundColor: "#b4b8c7", borderStyle: "solid" }}
               >
@@ -67,7 +66,7 @@ export default function RequestWithdrawal(props) {
                     <Typography variant="h5"> &emsp; Date &emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
-                    <Typography variant="h5"> &emsp; Name &emsp; </Typography>
+                    <Typography variant="h5"> &emsp;Name&emsp; </Typography>
                   </TableCell>
                   <TableCell style={{ borderStyle: "solid" }}>
                     <Typography variant="h5"> &emsp;Amount&emsp; </Typography>

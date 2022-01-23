@@ -101,101 +101,101 @@ export default function ClientPaymentVerification(props) {
             </Grid>
 
             <Grid item xs={6} style={{ marginLeft: 50 }}>
-              {usersClient.map((payment) => (
-                <Card style={{ backgroundColor: "#efe2e2" }}>
-                  <Typography variant="h5">
-                    <b>CLIENTS PAYMENT</b>
+              {/* {usersClient.map((payment) => ( */}
+              <Card style={{ backgroundColor: "#efe2e2" }}>
+                <Typography variant="h5">
+                  <b>CLIENTS PAYMENT</b>
+                </Typography>
+
+                <CardContent align="center">
+                  <img
+                    component="img"
+                    //   src={payment.imageUrl}
+                    src={
+                      "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                    }
+                    height={250}
+                    width={350}
+                    alt={profile.from}
+                  />
+                  <CardContent>
+                    <FormControl
+                      style={{
+                        width: 200,
+                        textAlign: "center",
+                        backgroundColor: "#ffecec",
+                      }}
+                    >
+                      <InputLabel id="demo-simple-select">STATUS</InputLabel>
+                      <Select
+                        // labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="STATUS"
+                        value={status}
+                        onChange={handleChange}
+                      >
+                        <MenuItem value={0}>PROCESS</MenuItem>
+                        <MenuItem value={100}>COMPLETED</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </CardContent>
+
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    border={2}
+                    borderRadius={10}
+                    maxWidth={500}
+                    backgroundColor="white"
+                  >
+                    {profile.from}
                   </Typography>
 
-                  <CardContent align="center">
-                    <img
-                      component="img"
-                      //   src={payment.imageUrl}
-                      src={
-                        "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-                      }
-                      height={250}
-                      width={350}
-                      alt={payment.from}
-                    />
-                    <CardContent>
-                      <FormControl
-                        style={{
-                          width: 200,
-                          textAlign: "center",
-                          backgroundColor: "#ffecec",
-                        }}
-                      >
-                        <InputLabel id="demo-simple-select">STATUS</InputLabel>
-                        <Select
-                          // labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          label="STATUS"
-                          value={status}
-                          onChange={handleChange}
-                        >
-                          <MenuItem value={0}>PROCESS</MenuItem>
-                          <MenuItem value={100}>COMPLETED</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </CardContent>
+                  <Typography variant="h5" align="center">
+                    {profile.PaymentMethod} NUMBER
+                  </Typography>
 
-                    <Typography
-                      variant="h5"
-                      align="center"
-                      border={2}
-                      borderRadius={10}
-                      maxWidth={500}
-                      backgroundColor="white"
-                    >
-                      {payment.from}
-                    </Typography>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    border={2}
+                    borderRadius={10}
+                    maxWidth={500}
+                    backgroundColor="white"
+                  >
+                    {profile.phone}
+                  </Typography>
 
-                    <Typography variant="h5" align="center">
-                      {payment.PaymentMethod} NUMBER
-                    </Typography>
+                  <Typography variant="h5" align="center">
+                    AMOUNT
+                  </Typography>
 
-                    <Typography
-                      variant="h5"
-                      align="center"
-                      border={2}
-                      borderRadius={10}
-                      maxWidth={500}
-                      backgroundColor="white"
-                    >
-                      {payment.phone}
-                    </Typography>
-
-                    <Typography variant="h5" align="center">
-                      AMOUNT
-                    </Typography>
-
-                    <Typography
-                      variant="h5"
-                      align="center"
-                      border={2}
-                      borderRadius={10}
-                      maxWidth={500}
-                      backgroundColor="white"
-                    >
-                      {payment.amount}
-                    </Typography>
-                  </CardContent>
-                  <CardContent align="center">
-                    <Button
-                      style={{
-                        backgroundColor: "#ed9220",
-                        borderRadius: 20,
-                        width: 100,
-                      }}
-                      variant="contained"
-                      onClick={handleSubmit}
-                    >
-                      OKAY
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    border={2}
+                    borderRadius={10}
+                    maxWidth={500}
+                    backgroundColor="white"
+                  >
+                    {profile.amount}
+                  </Typography>
+                </CardContent>
+                <CardContent align="center">
+                  <Button
+                    style={{
+                      backgroundColor: "#ed9220",
+                      borderRadius: 20,
+                      width: 100,
+                    }}
+                    variant="contained"
+                    onClick={handleSubmit}
+                  >
+                    OKAY
+                  </Button>
+                </CardContent>
+              </Card>
+              {/* ))} */}
             </Grid>
             <Grid item xs={3}></Grid>
           </Grid>
