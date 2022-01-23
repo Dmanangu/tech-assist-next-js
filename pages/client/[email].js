@@ -106,8 +106,8 @@ function UserProfile(props) {
               <Typography variant="h4">Proof of Valid ID's</Typography>
               <Container
                 style={{
-                  minWidth: 700,
-                  maxWidth: 700,
+                  minWidth: 300,
+                  maxWidth: 300,
                   minHeight: 290,
                   maxHeight: 290,
                   overflow: "hidden",
@@ -123,7 +123,7 @@ function UserProfile(props) {
                       alt={profile.fullname}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  {/* <Grid item xs={6}>
                     <img
                       component="img"
                       src={profile.validID2}
@@ -131,7 +131,7 @@ function UserProfile(props) {
                       width={300}
                       alt={profile.fullname}
                     />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Container>
             </Card>

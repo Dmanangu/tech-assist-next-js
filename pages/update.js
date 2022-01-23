@@ -17,6 +17,7 @@ import { postToJSON, firestore } from "../lib/firebase";
 import Image from "next/image";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import { useRouter } from "next/router";
 
 //
 export async function getServerSideProps() {
@@ -32,7 +33,7 @@ export async function getServerSideProps() {
   };
 }
 function DeleteUser(props) {
-  // const router = useRouter();
+  const router = useRouter();
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((users) => {
     return users.status.toLowerCase().includes("not verified");
@@ -47,7 +48,7 @@ function DeleteUser(props) {
           status: "Verified",
         })
         .then(alert("This User is now Verified"));
-      // router.push(`/update?redirect=${redirect}`);
+      router.push("/update");
     } catch (error) {
       console.log(error);
       alert(error);

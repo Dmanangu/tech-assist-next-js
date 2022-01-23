@@ -44,6 +44,7 @@ function DeleteUser(props) {
         .doc(e)
         .delete()
         .then(alert("This User is now deleted"));
+      router.push("/delete");
     } catch (error) {
       console.log(error);
       alert(error);
