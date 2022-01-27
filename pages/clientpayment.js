@@ -92,8 +92,8 @@ export default function ClientPayment(props) {
                               />
                               <TableCell>
                                 <Typography variant="h5">
-                                  FROM:<b>{payment.from} </b> &emsp; TO:
-                                  <b>{payment.to}</b>
+                                  FROM:<b>{payment.from} (CLIENT)</b> &emsp; TO:
+                                  <b>{payment.to} (WORKER)</b>
                                 </Typography>
                                 <Typography variant="h5">
                                   <b>Received:</b> {payment.message}
