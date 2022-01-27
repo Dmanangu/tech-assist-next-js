@@ -36,12 +36,32 @@ export default function ClientPayment(props) {
   const styles = useStyles();
   //firebase
   const [posts, setPosts] = useState(props.posts);
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
   const usersClient = posts.filter((payment) => {
     return payment.payment_status.toLowerCase().includes("process");
   });
   //firebase
+  const clientSearchHandler = (e) => {
+    const searchClient = filteredPosts;
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = usersClient.filter((payment) => {
+        return payment.from.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
   return (
     <Layout>
+      <input
+        style={{ marginTop: 20, width: 600 }}
+        type="search"
+        placeholder="Search User Here"
+        value={usersClient.payment}
+        onChange={clientSearchHandler}
+      />
       <div className={paymentHistoryStyles.paymentHistoryContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>

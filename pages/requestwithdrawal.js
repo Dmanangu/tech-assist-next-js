@@ -31,14 +31,34 @@ export async function getServerSideProps() {
 
 export default function RequestWithdrawal(props) {
   const styles = useStyles();
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
   //firebase
   const [posts, setPosts] = useState(props.posts);
   const usersClient = posts.filter((withdrawal) => {
     return withdrawal;
   });
   //firebase
+  const clientSearchHandler = (e) => {
+    const searchClient = filteredPosts;
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = usersClient.filter((withdrawal) => {
+        return withdrawal.withdrawer.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
   return (
     <Layout>
+      <input
+        style={{ marginTop: 20, width: 600 }}
+        type="search"
+        placeholder="Search User Here"
+        value={usersClient.withdrawal}
+        onChange={clientSearchHandler}
+      />
       <div className={paymentHistoryStyles.paymentHistoryContainer}>
         <div className={paymentStyles.paymentButtonContainer}>
           <NextLink href={"/paymenthistory"} passHref>
