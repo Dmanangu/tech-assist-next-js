@@ -33,6 +33,8 @@ export async function getServerSideProps() {
 function DeleteUser(props) {
   const router = useRouter();
   const [posts, setPosts] = useState(props.posts);
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
+
   const usersClient = posts.filter((users) => {
     return users;
     // .isClient.toLowerCase().includes("false");
@@ -50,8 +52,33 @@ function DeleteUser(props) {
       alert(error);
     }
   };
+  const filterSearch = ({ usersClient }) => {
+    const path = router.pathname;
+    const { query } = router;
+    if (usersClient.users) query.usersClient.users = usersClient.users;
+  };
+
+  const clientSearchHandler = (e) => {
+    const searchClient = filteredPosts;
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = usersClient.filter((users) => {
+        return users.fullname.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
   return (
     <Layout>
+      <input
+        style={{ marginTop: 20, width: 600 }}
+        type="search"
+        placeholder="Search User Here"
+        value={usersClient.users}
+        onChange={clientSearchHandler}
+      />
       <div className={delStyles.deleteContainer}>
         <Paper style={{ maxHeight: 700, overflow: "auto" }}>
           <Grid container spacing={1}>

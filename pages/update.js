@@ -35,6 +35,7 @@ export async function getServerSideProps() {
 function DeleteUser(props) {
   const router = useRouter();
   const [posts, setPosts] = useState(props.posts);
+  const [filteredPosts, setFilteredPosts] = useState(props.posts);
   const usersClient = posts.filter((users) => {
     return users.status.toLowerCase().includes("not verified");
   });
@@ -54,8 +55,27 @@ function DeleteUser(props) {
       alert(error);
     }
   };
+  const clientSearchHandler = (e) => {
+    const searchClient = filteredPosts;
+
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = usersClient.filter((users) => {
+        return users.fullname.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
   return (
     <Layout>
+      <input
+        style={{ marginTop: 20, width: 600 }}
+        type="search"
+        placeholder="Search User Here"
+        value={usersClient.users}
+        onChange={clientSearchHandler}
+      />
       <div className={upStyles.updateContainer}>
         <Paper style={{ maxHeight: 700, overflow: "auto" }}>
           <Grid container spacing={1}>
