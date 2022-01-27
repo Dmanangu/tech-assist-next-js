@@ -46,28 +46,20 @@ export default function Clients(props) {
   };
 
   const clientSearchHandler = (e) => {
-    // useEffect(() => {
-    //   fetchUser().then(u => setUser(u));
-    // }, []);
+    
     const searchClient = filteredPosts;
-    // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    // console.log(searchClient);
-    // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    
 
     if (e.target.value.length >= 0 && e.target.value === "") {
       setPosts(filteredPosts);
 
-      console.log("FINDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-      console.log(filteredPosts);
-      console.log("FINDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+      
     } else {
       const filter = usersClient.filter((users) => {
         return users.fullname.toLowerCase().includes(e.target.value);
       });
       setPosts(filter);
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-      console.log(filter);
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+      
     }
   };
   return (
