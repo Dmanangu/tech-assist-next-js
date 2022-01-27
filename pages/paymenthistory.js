@@ -64,6 +64,7 @@ export default function PaymentHistory(props) {
                 }}
               >
                 <TableRow>
+                  
                   <TableCell style={{ borderStyle: "solid" }}>
                     <Typography variant="h4"> Date </Typography>
                   </TableCell>

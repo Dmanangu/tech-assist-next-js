@@ -156,15 +156,17 @@ function UserProfile(props) {
                         src={
                           "https://images.unsplash.com/photo-1622151834625-66296f9f0e96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwd29ya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
                         }
+            
                         height={100}
                         width={100}
                         alt={profile.fullname}
+                        
                       />
                       {!usersClient2[0] ? (
                         <TableCell>NO POST YET</TableCell>
                       ) : (
                         <TableCell>
-                          <Typography>{usersClient2[0].name}</Typography>
+                          <Typography><strong>{usersClient2[0].name}</strong></Typography>
                           <Typography>{usersClient2[0].msg}</Typography>
                         </TableCell>
                       )}
