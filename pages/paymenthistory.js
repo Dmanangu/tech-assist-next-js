@@ -56,7 +56,7 @@ export default function PaymentHistory(props) {
         </div>
         <div className={paymentHistoryStyles.transactionHistory}>
           <div>
-            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 70 }}>
+            <Paper style={{ maxHeight: 750, overflow: "auto", marginLeft: 40 }}>
               {/* changed to margin 70 last margin is 40: To center the table */}
               <Table
                 style={{
