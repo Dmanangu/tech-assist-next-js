@@ -47,7 +47,7 @@ export default function PaymentHistory(props) {
       setPosts(filteredPosts);
     } else {
       const filter = usersClient.filter((payment) => {
-        return payment.from.toLowerCase().includes(e.target.value);
+        return payment.to.toLowerCase().includes(e.target.value);
       });
       setPosts(filter);
     }
